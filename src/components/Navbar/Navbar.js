@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -11,10 +11,33 @@ import {
 } from "./NavbarStyles";
 
 function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <AppBar
       position="fixed"
-      sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+      sx={{
+        backgroundColor: isScrolled ? "black" : "transparent",
+        transition: "background-color 0.3s ease",
+        boxShadow: "none",
+      }}
     >
       <Toolbar
         sx={{
@@ -45,13 +68,13 @@ function Navbar() {
           alt="Logo"
           sx={{
             height: "40px",
-            margin: "1rem",
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
           }}
         />
 
-        <Box
-          sx={{ marginLeft: "18rem", display: "flex", alignItems: "center" }}
-        >
+        <Box sx={{ marginLeft: "auto" }}>
           <SearchBox>
             <SearchIconWrapper>
               <SearchIcon />
