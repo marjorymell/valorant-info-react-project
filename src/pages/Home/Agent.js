@@ -10,6 +10,10 @@ const Agent = () => {
     { name: "Agent 4" },
     { name: "Agent 5" },
     { name: "Agent 6" },
+    { name: "Agent 7" },
+    { name: "Agent 8" },
+    { name: "Agent 9" },
+    { name: "Agent 10" },
   ];
 
   return (
