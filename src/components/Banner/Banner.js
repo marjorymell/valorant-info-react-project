@@ -1,14 +1,15 @@
 import React from "react";
+import { useBannerContext } from "../../contexts/BannerContext";
 import { BannerContainer, StartButton, Image } from "./BannerStyles";
-import valorant from "./../../assets/images/valorant.png";
-import info from "./../../assets/images/info.png";
 
 const Banner = () => {
+  const { bannerImages, buttonText } = useBannerContext();
+
   return (
     <BannerContainer>
-      <Image src={valorant} alt="Valorant" />
-      <Image src={info} alt="Info" />
-      <StartButton>START</StartButton>
+      <Image src={bannerImages.valorant} alt="Valorant" />
+      <Image src={bannerImages.info} alt="Info" />
+      <StartButton>{buttonText}</StartButton>
     </BannerContainer>
   );
 };

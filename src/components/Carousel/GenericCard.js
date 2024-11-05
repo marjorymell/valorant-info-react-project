@@ -1,7 +1,10 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
+import { useCarouselContext } from "../../contexts/CarouselContext";
 
-const GenericCard = ({ item, width, height, backgroundColor = "#e84152" }) => {
+const GenericCard = ({ item, width, height }) => {
+  const { cardSettings } = useCarouselContext();
+
   return (
     <Card
       sx={{
@@ -10,7 +13,7 @@ const GenericCard = ({ item, width, height, backgroundColor = "#e84152" }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: backgroundColor,
+        backgroundColor: cardSettings.backgroundColor,
       }}
     >
       <CardContent>

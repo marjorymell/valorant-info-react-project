@@ -1,11 +1,15 @@
 import React from "react";
 import { Box } from "@mui/material";
-import GenericCarousel from "../../components/Carousel/GenericCarousel";
-import GenericCard from "../../components/Carousel/GenericCard";
+import GenericCarousel from "../Carousel/GenericCarousel";
+import GenericCard from "../Carousel/GenericCard";
+import { useCarouselContext } from "../../contexts/CarouselContext";
 
 const ArsenalCarousel = ({ arsenals }) => {
-  const renderArsenalCard = (arsenals) => (
-    <GenericCard item={arsenals} width={620} height={300} />
+  const { carouselSettings } = useCarouselContext();
+  const { itemWidth, itemHeight, itemsToShow, gap } = carouselSettings.arsenal;
+
+  const renderArsenalCard = (arsenal) => (
+    <GenericCard item={arsenal} width={itemWidth} height={itemHeight} />
   );
 
   return (
@@ -13,10 +17,10 @@ const ArsenalCarousel = ({ arsenals }) => {
       <GenericCarousel
         items={arsenals}
         renderItem={renderArsenalCard}
-        itemWidth={620}
-        itemHeight={300}
-        itemsToShow={2}
-        gap={10}
+        itemWidth={itemWidth}
+        itemHeight={itemHeight}
+        itemsToShow={itemsToShow}
+        gap={gap}
       />
     </Box>
   );

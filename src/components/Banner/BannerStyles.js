@@ -1,4 +1,3 @@
-// BannerStyles.js
 import { styled } from "@mui/material";
 import { Button } from "@mui/material";
 

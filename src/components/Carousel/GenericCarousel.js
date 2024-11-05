@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Box, IconButton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { useCarouselContext } from "../../contexts/CarouselContext";
 
 const GenericCarousel = ({
-  items,
+  items = [],
   renderItem,
   itemWidth,
   itemHeight,
   itemsToShow,
   gap = 10,
-  backgroundColor = "transparent",
 }) => {
+  const { carouselSettings } = useCarouselContext();
   const [startIndex, setStartIndex] = useState(0);
 
   const handlePrev = () => {
@@ -23,6 +24,10 @@ const GenericCarousel = ({
     );
   };
 
+  if (!items || items.length === 0) {
+    return <Box>No items to display</Box>;
+  }
+
   return (
     <Box
       sx={{
@@ -30,7 +35,7 @@ const GenericCarousel = ({
         alignItems: "center",
         justifyContent: "center",
         padding: "20px",
-        backgroundColor: backgroundColor,
+        backgroundColor: carouselSettings.backgroundColor,
       }}
     >
       <IconButton

@@ -1,9 +1,12 @@
 import { styled } from "@mui/material";
 
-export const BackgroundContainer = styled("div")(() => ({
+export const BackgroundContainer = styled("div")(({ gradient }) => ({
   minHeight: "100vh",
-  background:
-    "linear-gradient(to bottom, black 0%, #0e1822 30%, #e84152 70%, white 100%)",
+  background: `linear-gradient(to bottom, 
+    ${gradient.color1} ${gradient.stop1}, 
+    ${gradient.color2} ${gradient.stop2}, 
+    ${gradient.color3} ${gradient.stop3}, 
+    ${gradient.color4} ${gradient.stop4})`,
   display: "flex",
   flexDirection: "column",
 }));

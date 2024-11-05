@@ -1,11 +1,15 @@
 import React from "react";
 import { Box } from "@mui/material";
-import GenericCarousel from "../../components/Carousel/GenericCarousel";
-import GenericCard from "../../components/Carousel/GenericCard";
+import GenericCarousel from "../Carousel/GenericCarousel";
+import GenericCard from "../Carousel/GenericCard";
+import { useCarouselContext } from "../../contexts/CarouselContext";
 
 const AgentCarousel = ({ agents }) => {
+  const { carouselSettings } = useCarouselContext();
+  const { itemWidth, itemHeight, itemsToShow, gap } = carouselSettings.agent;
+
   const renderAgentCard = (agent) => (
-    <GenericCard item={agent} width={200} height={300} />
+    <GenericCard item={agent} width={itemWidth} height={itemHeight} />
   );
 
   return (
@@ -13,10 +17,10 @@ const AgentCarousel = ({ agents }) => {
       <GenericCarousel
         items={agents}
         renderItem={renderAgentCard}
-        itemWidth={200}
-        itemHeight={300}
-        itemsToShow={6}
-        gap={10}
+        itemWidth={itemWidth}
+        itemHeight={itemHeight}
+        itemsToShow={itemsToShow}
+        gap={gap}
       />
     </Box>
   );

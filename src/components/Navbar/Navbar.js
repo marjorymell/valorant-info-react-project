@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/images/logo.png";
+import { useNavbarContext } from "../../contexts/NavbarContext";
 import {
   NavLink,
   SearchBox,
@@ -11,24 +12,7 @@ import {
 } from "./NavbarStyles";
 
 function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const { isScrolled } = useNavbarContext();
 
   return (
     <AppBar
