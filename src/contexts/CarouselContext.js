@@ -18,6 +18,12 @@ export const CarouselProvider = ({ children }) => {
       itemsToShow: 2,
       gap: 10,
     },
+    maps: {
+      itemWidth: 1250,
+      itemHeight: 500,
+      itemsToShow: 1,
+      gap: 20,
+    },
     backgroundColor: "transparent",
   });
 
