@@ -10,7 +10,7 @@ const Home = () => (
   <CarouselProvider>
     <Background>
       <Banner />
-      <section style={{ marginTop: "500px" }}>
+      <section style={{ marginTop: "20px" }}>
         <Agent />
         <Arsenal />
         <Maps />

@@ -3,10 +3,10 @@ import { useBackgroundContext } from "../../contexts/BackgroundContext";
 import { BackgroundContainer, ContentWrapper } from "./BackgroundStyles";
 
 const Background = ({ children }) => {
-  const { gradient } = useBackgroundContext();
+  const { backgroundColor } = useBackgroundContext();
 
   return (
-    <BackgroundContainer gradient={gradient}>
+    <BackgroundContainer backgroundColor={backgroundColor}>
       <ContentWrapper>{children}</ContentWrapper>
     </BackgroundContainer>
   );

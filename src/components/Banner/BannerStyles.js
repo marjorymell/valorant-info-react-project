@@ -1,41 +1,92 @@
-import { styled } from "@mui/material";
-import { Button } from "@mui/material";
+import { styled, keyframes } from "@mui/material/styles";
 
-export const BannerContainer = styled("div")(({ theme }) => ({
+const moveBackground = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
+export const BannerContainer = styled("div")({
   position: "relative",
+  width: "100%",
+  height: "100vh",
+  overflow: "hidden",
   display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  height: "100vh",
-  margin: 0,
-  flexDirection: "column",
-  marginTop: "-30px",
-}));
+});
 
-export const StartButton = styled(Button)(({ theme }) => ({
-  backgroundColor: "#ffff",
-  marginTop: theme.spacing(2),
-  color: "black",
-  border: "none",
-  borderRadius: theme.shape.borderRadius,
-  padding: theme.spacing(0.5, 2.5),
-  fontSize: "20px",
-  fontFamily: "Roboto, sans-serif",
-  fontWeight: 500,
-  cursor: "pointer",
-  transition: "background-color 0.3s, box-shadow 0.3s",
-  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.5)",
+export const AnimatedBackground = styled("div")({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  background:
+    "linear-gradient(45deg, #0e1822, #253f58, #112d40, #0f202d, #253f58)",
+  backgroundSize: "600% 600%",
+  animation: `${moveBackground} 18s ease-in-out infinite`,
+});
 
-  "&:hover": {
-    backgroundColor: "#bd3944",
-    boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.6)",
+export const Image = styled("img")({
+  position: "absolute",
+  zIndex: 1,
+  "&.valorant-logo": {
+    top: "40%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "533px",
+    height: "90px",
+    maxWidth: "100%",
   },
-}));
+  "&.info-image": {
+    top: "50%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "247px",
+    height: "90px",
+    maxWidth: "100%",
+  },
+  "@media (max-width: 768px)": {
+    "&.valorant-logo": {
+      width: "266.5px",
+      height: "45px",
+      top: "15%",
+    },
+    "&.info-image": {
+      width: "123.5px",
+      height: "45px",
+      top: "30%",
+    },
+  },
+});
 
-export const Image = styled("img")(({ theme }) => ({
-  width: "auto",
-  height: "100px",
-  maxWidth: "100%",
-  marginBottom: theme.spacing(2.5),
-  marginTop: "-10px",
-}));
+export const StartButton = styled("button")({
+  position: "absolute",
+  bottom: "15%",
+  left: "50%",
+  transform: "translateX(-50%)",
+  padding: "12px 24px",
+  fontSize: "1.4rem",
+  backgroundColor: "#0f1923",
+  color: "#fff",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
+  zIndex: 2,
+  "&:hover": {
+    backgroundColor: "#1b2d40",
+  },
+  "@media (max-width: 768px)": {
+    fontSize: "1rem",
+    padding: "10px 20px",
+    bottom: "10%",
+  },
+});

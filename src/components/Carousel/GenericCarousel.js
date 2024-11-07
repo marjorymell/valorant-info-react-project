@@ -41,7 +41,12 @@ const GenericCarousel = ({
       <IconButton
         onClick={handlePrev}
         disabled={startIndex === 0}
-        sx={{ color: "white" }}
+        sx={{
+          color: "#0e1822",
+          "&:disabled": {
+            color: "rgba(14, 24, 34, 0.3)", // Lighter version of #0e1822 for disabled state
+          },
+        }}
       >
         <ArrowBackIos />
       </IconButton>
@@ -71,7 +76,12 @@ const GenericCarousel = ({
       <IconButton
         onClick={handleNext}
         disabled={startIndex >= items.length - itemsToShow}
-        sx={{ color: "white" }}
+        sx={{
+          color: "#0e1822",
+          "&:disabled": {
+            color: "rgba(14, 24, 34, 0.3)", // Lighter version of #0e1822 for disabled state
+          },
+        }}
       >
         <ArrowForwardIos />
       </IconButton>

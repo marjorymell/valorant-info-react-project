@@ -1,7 +1,7 @@
 import { Typography, InputBase, styled, alpha } from "@mui/material";
 
 export const NavLink = styled(Typography)(({ theme }) => ({
-  color: "#3f464c",
+  color: "#d3d3d3",
   textDecoration: "none",
   fontFamily: "Roboto, sans-serif",
   fontWeight: 500,
