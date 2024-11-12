@@ -8,9 +8,9 @@ export const CarouselProvider = ({ children }) => {
   const [carouselSettings, setCarouselSettings] = useState({
     agent: {
       itemWidth: 200,
-      itemHeight: 300,
-      itemsToShow: 6,
-      gap: 10,
+      itemHeight: 320,
+      itemsToShow: 5,
+      gap: 20,
     },
     arsenal: {
       itemWidth: 620,
@@ -19,16 +19,18 @@ export const CarouselProvider = ({ children }) => {
       gap: 10,
     },
     maps: {
-      itemWidth: 1250,
-      itemHeight: 500,
-      itemsToShow: 1,
+      itemWidth: 400,
+      itemHeight: 225,
+      itemsToShow: 3,
       gap: 20,
     },
-    backgroundColor: "transparent",
   });
 
   const [cardSettings, setCardSettings] = useState({
-    backgroundColor: "#e84152",
+    backgroundColor: "#f0f0f0",
+    borderColor: "#e0e0e0",
+    borderWidth: "1px",
+    textColor: "#ff4655",
   });
 
   const updateCarouselSettings = (type, newSettings) => {

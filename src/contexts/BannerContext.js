@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import valorant from "../assets/images/valorant.png";
-import info from "../assets/images/info.png";
+import valorant from "../assets/images/Home/valorant.png";
+import info from "../assets/images/Home/info.png";
 
 const BannerContext = createContext();
 

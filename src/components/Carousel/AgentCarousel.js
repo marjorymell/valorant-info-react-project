@@ -1,19 +1,59 @@
-import React from "react";
-import { Box } from "@mui/material";
-import GenericCarousel from "../Carousel/GenericCarousel";
-import GenericCard from "../Carousel/GenericCard";
+import React, { useState, useEffect } from "react";
+import { Box, Typography } from "@mui/material";
+import GenericCarousel from "./GenericCarousel";
+import GenericCard from "./GenericCard";
 import { useCarouselContext } from "../../contexts/CarouselContext";
+import { fetchAgents } from "../../services/agentService";
 
-const AgentCarousel = ({ agents }) => {
+const AgentCarousel = () => {
   const { carouselSettings } = useCarouselContext();
   const { itemWidth, itemHeight, itemsToShow, gap } = carouselSettings.agent;
+  const [agents, setAgents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadAgents = async () => {
+      try {
+        const agentData = await fetchAgents();
+        setAgents(agentData);
+        setLoading(false);
+      } catch (err) {
+        setError("Error fetching agents");
+        setLoading(false);
+      }
+    };
+
+    loadAgents();
+  }, []);
+
+  if (loading) {
+    return <Box>Loading agents...</Box>;
+  }
+
+  if (error) {
+    return <Box>Error: {error}</Box>;
+  }
 
   const renderAgentCard = (agent) => (
-    <GenericCard item={agent} width={itemWidth} height={itemHeight} />
+    <GenericCard
+      item={{
+        name: agent.displayName,
+        image: agent.fullPortrait,
+      }}
+      width={itemWidth}
+      height={itemHeight}
+    />
   );
 
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
+      <Typography
+        variant="h4"
+        sx={{ textAlign: "center", margin: "20px 0", color: "#0f1923" }}
+      >
+        Agents
+      </Typography>
       <GenericCarousel
         items={agents}
         renderItem={renderAgentCard}
@@ -26,28 +66,4 @@ const AgentCarousel = ({ agents }) => {
   );
 };
 
-const Agent = () => {
-  const agents = [
-    { name: "Agent 1" },
-    { name: "Agent 2" },
-    { name: "Agent 3" },
-    { name: "Agent 4" },
-    { name: "Agent 5" },
-    { name: "Agent 6" },
-    { name: "Agent 7" },
-    { name: "Agent 8" },
-    { name: "Agent 9" },
-    { name: "Agent 10" },
-  ];
-
-  return (
-    <Box>
-      <h1 style={{ color: "#0e1822", textAlign: "center", marginTop: "50px" }}>
-        AGENTS
-      </h1>
-      <AgentCarousel agents={agents} />
-    </Box>
-  );
-};
-
-export default Agent;
+export default AgentCarousel;

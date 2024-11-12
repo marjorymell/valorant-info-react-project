@@ -1,5 +1,5 @@
 import React from "react";
-import Agent from "../../components/Carousel/AgentCarousel";
+import AgentCarousel from "../../components/Carousel/AgentCarousel";
 import Arsenal from "../../components/Carousel/ArsenalCarousel";
 import Maps from "../../components/Carousel/MapsCarousel";
 import Banner from "../../components/Banner/Banner";
@@ -10,8 +10,8 @@ const Home = () => (
   <CarouselProvider>
     <Background>
       <Banner />
-      <section style={{ marginTop: "20px" }}>
-        <Agent />
+      <section>
+        <AgentCarousel />
         <Arsenal />
         <Maps />
       </section>

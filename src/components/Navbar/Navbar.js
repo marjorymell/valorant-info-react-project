@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import logo from "./../../assets/images/logo.png";
+import logo from "./../../assets/images/Home/logo.png";
 import { useNavbarContext } from "../../contexts/NavbarContext";
 import {
   NavLink,
