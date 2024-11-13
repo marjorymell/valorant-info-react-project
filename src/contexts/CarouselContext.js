@@ -13,10 +13,10 @@ export const CarouselProvider = ({ children }) => {
       gap: 20,
     },
     arsenal: {
-      itemWidth: 620,
-      itemHeight: 300,
-      itemsToShow: 2,
-      gap: 10,
+      itemWidth: 255,
+      itemHeight: 200,
+      itemsToShow: 4,
+      gap: 20,
     },
     maps: {
       itemWidth: 400,

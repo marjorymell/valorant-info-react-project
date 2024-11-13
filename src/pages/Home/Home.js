@@ -1,22 +1,28 @@
 import React from "react";
 import AgentCarousel from "../../components/Carousel/AgentCarousel";
-import Arsenal from "../../components/Carousel/ArsenalCarousel";
+import ArsenalCarousel from "../../components/Carousel/ArsenalCarousel";
 import Maps from "../../components/Carousel/MapsCarousel";
 import Banner from "../../components/Banner/Banner";
 import Background from "../../components/Background/Background";
 import { CarouselProvider } from "../../contexts/CarouselContext";
+import { BackgroundProvider } from "../../contexts/BackgroundContext";
+import { BannerProvider } from "../../contexts/BannerContext";
 
 const Home = () => (
-  <CarouselProvider>
-    <Background>
-      <Banner />
-      <section>
-        <AgentCarousel />
-        <Arsenal />
-        <Maps />
-      </section>
-    </Background>
-  </CarouselProvider>
+  <BackgroundProvider>
+    <BannerProvider>
+      <CarouselProvider>
+        <Background>
+          <Banner />
+          <section>
+            <AgentCarousel />
+            <ArsenalCarousel />
+            <Maps />
+          </section>
+        </Background>
+      </CarouselProvider>
+    </BannerProvider>
+  </BackgroundProvider>
 );
 
 export default Home;
