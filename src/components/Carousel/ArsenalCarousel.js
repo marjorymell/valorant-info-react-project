@@ -27,10 +27,6 @@ const ArsenalCarousel = () => {
     loadArsenal();
   }, []);
 
-  if (loading) {
-    return <Box>Loading arsenal...</Box>;
-  }
-
   if (error) {
     return <Box>Error: {error}</Box>;
   }
@@ -62,7 +58,7 @@ const ArsenalCarousel = () => {
         itemHeight={itemHeight}
         itemsToShow={itemsToShow}
         gap={gap}
-        type="arsenal"
+        loading={loading}
       />
     </Box>
   );

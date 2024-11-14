@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Skeleton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useCarouselContext } from "../../contexts/CarouselContext";
 
@@ -10,6 +10,7 @@ const GenericCarousel = ({
   itemHeight,
   itemsToShow,
   gap = 10,
+  loading = false,
 }) => {
   const { carouselSettings } = useCarouselContext();
   const [startIndex, setStartIndex] = useState(0);
@@ -23,6 +24,31 @@ const GenericCarousel = ({
       Math.min(items.length - itemsToShow, prevIndex + 1)
     );
   };
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
+          gap: `${gap}px`,
+          backgroundColor: carouselSettings.backgroundColor,
+        }}
+      >
+        {[...Array(itemsToShow)].map((_, index) => (
+          <Skeleton
+            key={index}
+            variant="rectangular"
+            width={itemWidth}
+            height={itemHeight}
+            animation="wave"
+          />
+        ))}
+      </Box>
+    );
+  }
 
   if (!items || items.length === 0) {
     return <Box>No items to display</Box>;
@@ -44,7 +70,7 @@ const GenericCarousel = ({
         sx={{
           color: "#0e1822",
           "&:disabled": {
-            color: "rgba(14, 24, 34, 0.3)", // Lighter version of #0e1822 for disabled state
+            color: "rgba(14, 24, 34, 0.3)",
           },
         }}
       >
@@ -67,7 +93,14 @@ const GenericCarousel = ({
           }}
         >
           {items.map((item, index) => (
-            <Box key={index} sx={{ marginRight: `${gap}px` }}>
+            <Box
+              key={index}
+              sx={{
+                marginRight: index === items.length - 1 ? 0 : `${gap}px`,
+                flexShrink: 0,
+                width: itemWidth,
+              }}
+            >
               {renderItem(item)}
             </Box>
           ))}
@@ -79,7 +112,7 @@ const GenericCarousel = ({
         sx={{
           color: "#0e1822",
           "&:disabled": {
-            color: "rgba(14, 24, 34, 0.3)", // Lighter version of #0e1822 for disabled state
+            color: "rgba(14, 24, 34, 0.3)",
           },
         }}
       >

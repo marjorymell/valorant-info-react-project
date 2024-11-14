@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import GenericCarousel from "./GenericCarousel";
 import GenericCard from "./GenericCard";
 import { useCarouselContext } from "../../contexts/CarouselContext";
-import { fetchAgents } from "../../services/agentsService";
+import { fetchAgents } from "../../services/agentService";
 
 const AgentCarousel = () => {
   const { carouselSettings } = useCarouselContext();
@@ -26,10 +26,6 @@ const AgentCarousel = () => {
 
     loadAgents();
   }, []);
-
-  if (loading) {
-    return <Box>Loading agents...</Box>;
-  }
 
   if (error) {
     return <Box>Error: {error}</Box>;
@@ -62,7 +58,7 @@ const AgentCarousel = () => {
         itemHeight={itemHeight}
         itemsToShow={itemsToShow}
         gap={gap}
-        type="agent"
+        loading={loading}
       />
     </Box>
   );

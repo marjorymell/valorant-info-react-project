@@ -27,10 +27,6 @@ const MapsCarousel = () => {
     loadMaps();
   }, []);
 
-  if (loading) {
-    return <Box>Loading maps...</Box>;
-  }
-
   if (error) {
     return <Box>Error: {error}</Box>;
   }
@@ -62,7 +58,7 @@ const MapsCarousel = () => {
         itemHeight={itemHeight}
         itemsToShow={itemsToShow}
         gap={gap}
-        type="map"
+        loading={loading}
       />
     </Box>
   );
