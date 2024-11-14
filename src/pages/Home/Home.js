@@ -1,7 +1,7 @@
 import React from "react";
 import AgentCarousel from "../../components/Carousel/AgentCarousel";
 import ArsenalCarousel from "../../components/Carousel/ArsenalCarousel";
-import Maps from "../../components/Carousel/MapsCarousel";
+import MapsCarousel from "../../components/Carousel/MapsCarousel";
 import Banner from "../../components/Banner/Banner";
 import Background from "../../components/Background/Background";
 import { CarouselProvider } from "../../contexts/CarouselContext";
@@ -17,7 +17,7 @@ const Home = () => (
           <section>
             <AgentCarousel />
             <ArsenalCarousel />
-            <Maps />
+            <MapsCarousel />
           </section>
         </Background>
       </CarouselProvider>
