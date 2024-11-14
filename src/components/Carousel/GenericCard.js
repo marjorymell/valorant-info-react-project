@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useCarouselContext } from "../../contexts/CarouselContext";
@@ -25,7 +27,7 @@ const GenericCard = ({ item, width, height, type }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#f0f0f0", // Light gray background
+          backgroundColor: "#f0f0f0",
           padding: type === "arsenal" ? "20px" : 0,
         }}
       >
@@ -34,11 +36,18 @@ const GenericCard = ({ item, width, height, type }) => {
           src={item.image}
           alt={item.name}
           sx={{
-            width: type === "arsenal" ? "auto" : "100%",
-            height: type === "arsenal" ? "auto" : "100%",
+            width:
+              type === "map" ? "100%" : type === "arsenal" ? "auto" : "100%",
+            height:
+              type === "map" ? "100%" : type === "arsenal" ? "auto" : "100%",
             maxWidth: type === "arsenal" ? "80%" : "100%",
             maxHeight: type === "arsenal" ? "80%" : "100%",
-            objectFit: type === "arsenal" ? "contain" : "cover",
+            objectFit:
+              type === "map"
+                ? "cover"
+                : type === "arsenal"
+                ? "contain"
+                : "cover",
           }}
         />
       </Box>
@@ -46,8 +55,8 @@ const GenericCard = ({ item, width, height, type }) => {
         variant="h6"
         component="div"
         sx={{
-          color: "#ff4655", // Valorant red color
-          backgroundColor: "#0f1923", // Valorant blue color
+          color: "#f0f0f0",
+          backgroundColor: "#0f1923",
           padding: "8px",
           width: "100%",
           textAlign: "center",

@@ -19,9 +19,9 @@ export const CarouselProvider = ({ children }) => {
       gap: 20,
     },
     maps: {
-      itemWidth: 400,
-      itemHeight: 225,
-      itemsToShow: 3,
+      itemWidth: 525,
+      itemHeight: 300,
+      itemsToShow: 2,
       gap: 20,
     },
   });

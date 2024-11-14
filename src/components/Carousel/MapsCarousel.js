@@ -1,19 +1,60 @@
-import React from "react";
-import { Box } from "@mui/material";
-import GenericCarousel from "../Carousel/GenericCarousel";
-import GenericCard from "../Carousel/GenericCard";
+import React, { useState, useEffect } from "react";
+import { Box, Typography } from "@mui/material";
+import GenericCarousel from "./GenericCarousel";
+import GenericCard from "./GenericCard";
 import { useCarouselContext } from "../../contexts/CarouselContext";
+import { fetchMaps } from "../../services/mapService";
 
-const MapsCarousel = ({ maps }) => {
+const MapsCarousel = () => {
   const { carouselSettings } = useCarouselContext();
   const { itemWidth, itemHeight, itemsToShow, gap } = carouselSettings.maps;
+  const [maps, setMaps] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadMaps = async () => {
+      try {
+        const mapsData = await fetchMaps();
+        setMaps(mapsData);
+        setLoading(false);
+      } catch (err) {
+        setError("Error fetching maps");
+        setLoading(false);
+      }
+    };
+
+    loadMaps();
+  }, []);
+
+  if (loading) {
+    return <Box>Loading maps...</Box>;
+  }
+
+  if (error) {
+    return <Box>Error: {error}</Box>;
+  }
 
   const renderMapCard = (map) => (
-    <GenericCard item={map} width={itemWidth} height={itemHeight} />
+    <GenericCard
+      item={{
+        name: map.displayName,
+        image: map.splash,
+      }}
+      width={itemWidth}
+      height={itemHeight}
+      type="map"
+    />
   );
 
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
+      <Typography
+        variant="h4"
+        sx={{ textAlign: "center", margin: "20px 0", color: "#0f1923" }}
+      >
+        Maps
+      </Typography>
       <GenericCarousel
         items={maps}
         renderItem={renderMapCard}
@@ -21,28 +62,10 @@ const MapsCarousel = ({ maps }) => {
         itemHeight={itemHeight}
         itemsToShow={itemsToShow}
         gap={gap}
+        type="map"
       />
     </Box>
   );
 };
 
-const Maps = () => {
-  const maps = [
-    { name: "Ascent" },
-    { name: "Bind" },
-    { name: "Haven" },
-    { name: "Split" },
-    { name: "Icebox" },
-  ];
-
-  return (
-    <Box>
-      <h1 style={{ color: "#0e1822", textAlign: "center", marginTop: "50px" }}>
-        MAPS
-      </h1>
-      <MapsCarousel maps={maps} />
-    </Box>
-  );
-};
-
-export default Maps;
+export default MapsCarousel;
