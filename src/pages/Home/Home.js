@@ -4,24 +4,21 @@ import ArsenalCarousel from "../../components/Carousel/ArsenalCarousel";
 import MapsCarousel from "../../components/Carousel/MapsCarousel";
 import Banner from "../../components/Banner/Banner";
 import Background from "../../components/Background/Background";
-import { CarouselProvider } from "../../contexts/CarouselContext";
-import { BackgroundProvider } from "../../contexts/BackgroundContext";
-import { BannerProvider } from "../../contexts/BannerContext";
+import { CarouselProvider } from "../../contexts/Carousel";
+import { BackgroundProvider } from "../../contexts/Background";
 
 const Home = () => (
   <BackgroundProvider>
-    <BannerProvider>
-      <CarouselProvider>
-        <Background>
-          <Banner />
-          <section>
-            <AgentCarousel />
-            <ArsenalCarousel />
-            <MapsCarousel />
-          </section>
-        </Background>
-      </CarouselProvider>
-    </BannerProvider>
+    <CarouselProvider>
+      <Background>
+        <Banner />
+        <section>
+          <AgentCarousel />
+          <ArsenalCarousel />
+          <MapsCarousel />
+        </section>
+      </Background>
+    </CarouselProvider>
   </BackgroundProvider>
 );
 

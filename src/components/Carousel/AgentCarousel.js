@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import GenericCarousel from "./GenericCarousel";
 import GenericCard from "./GenericCard";
-import { useCarouselContext } from "../../contexts/CarouselContext";
-import { fetchAgents } from "../../services/agentService";
+import { useCarouselContext } from "../../contexts/Carousel";
+import { fetchAgents } from "../../services/Agent";
 
 const AgentCarousel = () => {
   const { carouselSettings } = useCarouselContext();

@@ -1,5 +1,5 @@
 import React from "react";
-import { useBannerContext } from "../../contexts/BannerContext";
+import { useBannerContext } from "../../contexts/Banner";
 import {
   BannerContainer,
   StartButton,

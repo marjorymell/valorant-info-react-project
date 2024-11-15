@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { useCarouselContext } from "../../contexts/CarouselContext";
+import { useCarouselContext } from "../../contexts/Carousel";
 
 const GenericCard = ({ item, width, height, type }) => {
   const { cardSettings } = useCarouselContext();

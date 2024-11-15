@@ -1,22 +1,24 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Agent from "./pages/Agent/Agent";
 import Navbar from "./components/Navbar/Navbar";
-import { NavbarProvider } from "./contexts/NavbarContext";
-import { BackgroundProvider } from "./contexts/BackgroundContext";
-import { BannerProvider } from "./contexts/BannerContext";
+import { NavbarProvider } from "./contexts/Navbar";
+import { BackgroundProvider } from "./contexts/Background";
+import { BannerProvider } from "./contexts/Banner";
 
 const App = () => {
   return (
     <BackgroundProvider>
-      <NavbarProvider>
-        <BannerProvider>
+      <BannerProvider>
+        <NavbarProvider>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/agent/:agentId" element={<Agent />} />
           </Routes>
-        </BannerProvider>
-      </NavbarProvider>
+        </NavbarProvider>
+      </BannerProvider>
     </BackgroundProvider>
   );
 };

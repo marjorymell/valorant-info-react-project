@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Box } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/images/Home/logo.png";
-import { useNavbarContext } from "../../contexts/NavbarContext";
+import { useNavbarContext } from "../../contexts/Navbar";
 import {
   NavLink,
   SearchBox,

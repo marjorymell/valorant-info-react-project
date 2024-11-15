@@ -1,5 +1,5 @@
 import React from "react";
-import { useBackgroundContext } from "../../contexts/BackgroundContext";
+import { useBackgroundContext } from "../../contexts/Background";
 import { BackgroundContainer, ContentWrapper } from "./BackgroundStyles";
 
 const Background = ({ children }) => {

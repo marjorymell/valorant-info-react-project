@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, IconButton, Skeleton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import { useCarouselContext } from "../../contexts/CarouselContext";
+import { useCarouselContext } from "../../contexts/Carousel";
 
 const GenericCarousel = ({
   items = [],

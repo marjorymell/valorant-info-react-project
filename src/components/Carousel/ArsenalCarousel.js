@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import GenericCarousel from "./GenericCarousel";
 import GenericCard from "./GenericCard";
-import { useCarouselContext } from "../../contexts/CarouselContext";
-import { fetchArsenal } from "../../services/arsenalService";
+import { useCarouselContext } from "../../contexts/Carousel";
+import { fetchArsenal } from "../../services/Arsenal";
 
 const ArsenalCarousel = () => {
   const { carouselSettings } = useCarouselContext();
