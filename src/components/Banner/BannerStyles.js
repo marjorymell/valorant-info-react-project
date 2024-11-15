@@ -75,14 +75,14 @@ export const StartButton = styled("button")({
   transform: "translateX(-50%)",
   padding: "12px 24px",
   fontSize: "1.4rem",
-  backgroundColor: "#0f1923",
-  color: "#fff",
+  backgroundColor: "black",
+  color: "white",
   border: "none",
   borderRadius: "5px",
   cursor: "pointer",
   zIndex: 2,
   "&:hover": {
-    backgroundColor: "#1b2d40",
+    backgroundColor: "#1a1a1a",
   },
   "@media (max-width: 768px)": {
     fontSize: "1rem",

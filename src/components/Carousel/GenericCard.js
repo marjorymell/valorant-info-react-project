@@ -54,7 +54,7 @@ const GenericCard = ({ item, width, height, type }) => {
         component="div"
         sx={{
           color: "#f0f0f0",
-          backgroundColor: "#0f1923",
+          backgroundColor: "black",
           padding: "8px",
           width: "100%",
           textAlign: "center",

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import GenericCarousel from "./GenericCarousel";
 import GenericCard from "./GenericCard";
 import { useCarouselContext } from "../../contexts/Carousel";
@@ -32,15 +33,21 @@ const AgentCarousel = () => {
   }
 
   const renderAgentCard = (agent) => (
-    <GenericCard
-      item={{
-        name: agent.displayName,
-        image: agent.fullPortrait,
-      }}
-      width={itemWidth}
-      height={itemHeight}
-      type="agent"
-    />
+    <Link
+      to={`/agent/${agent.uuid}`}
+      key={agent.uuid}
+      style={{ textDecoration: "none" }}
+    >
+      <GenericCard
+        item={{
+          name: agent.displayName,
+          image: agent.fullPortrait,
+        }}
+        width={itemWidth}
+        height={itemHeight}
+        type="agent"
+      />
+    </Link>
   );
 
   return (

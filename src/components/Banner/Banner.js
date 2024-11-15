@@ -10,6 +10,13 @@ import {
 const Banner = () => {
   const { bannerImages, buttonText } = useBannerContext();
 
+  const scrollDown = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <BannerContainer>
       <AnimatedBackground />
@@ -19,7 +26,7 @@ const Banner = () => {
         className="valorant-logo"
       />
       <Image src={bannerImages.info} alt="Info" className="info-image" />
-      <StartButton>{buttonText}</StartButton>
+      <StartButton onClick={scrollDown}>{buttonText}</StartButton>
     </BannerContainer>
   );
 };
