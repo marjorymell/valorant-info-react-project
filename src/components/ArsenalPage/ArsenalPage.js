@@ -20,7 +20,12 @@ const ArsenalPage = () => {
   }, []);
 
   if (error) {
-    return <StyledContainer>Error: {error}</StyledContainer>;
+    return (
+      <StyledContainer>
+        <StyledHeader>Error</StyledHeader>
+        <p>{error}</p>
+      </StyledContainer>
+    );
   }
 
   return (
@@ -31,25 +36,30 @@ const ArsenalPage = () => {
         {loading
           ? Array.from({ length: 6 }).map((_, index) => (
               <StyledWeaponCard key={index}>
-                <Skeleton variant="rectangular" width={150} height={150} />
-                <Skeleton width="80%" height={20} style={{ marginTop: 10 }} />
-                <Skeleton width="60%" height={20} style={{ marginTop: 5 }} />
+                <Skeleton variant="rectangular" width="100%" height="150px" />
+                <Skeleton
+                  width="80%"
+                  height="20px"
+                  style={{ marginTop: "10px" }}
+                />
+                <Skeleton
+                  width="60%"
+                  height="20px"
+                  style={{ marginTop: "5px" }}
+                />
               </StyledWeaponCard>
             ))
           : weapons.map((weapon) => (
               <StyledWeaponCard key={weapon.uuid}>
                 <StyledWeaponImage
-                  src={weapon.displayIcon}
+                  src={weapon.displayIcon || ""}
                   alt={weapon.displayName}
                 />
                 <StyledWeaponName>{weapon.displayName}</StyledWeaponName>
                 <StyledWeaponStats>
-                  Category: {weapon.shopData?.category || "N/A"}
-                  <br />
-                  Cost: {weapon.shopData?.cost || "N/A"} Credits
-                  <br />
-                  Fire Rate: {weapon.weaponStats?.fireRate || "N/A"}
-                  <br />
+                  Category: {weapon.shopData?.category || "N/A"} <br />
+                  Cost: {weapon.shopData?.cost || "N/A"} Credits <br />
+                  Fire Rate: {weapon.weaponStats?.fireRate || "N/A"} <br />
                   Magazine Size: {weapon.weaponStats?.magazineSize || "N/A"}
                 </StyledWeaponStats>
               </StyledWeaponCard>
