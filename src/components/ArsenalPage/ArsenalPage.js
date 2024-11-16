@@ -1,6 +1,5 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { useArsenalContext } from "../../contexts/ArsenalPage";
-import { fetchArsenal } from "../../services/Arsenal";
 import {
   StyledContainer,
   StyledHeader,
@@ -11,55 +10,14 @@ import {
   StyledWeaponStats,
 } from "./ArsenalPageStyles";
 import { Skeleton } from "@mui/material";
+import WeaponSearch from "./WeaponSearch";
 
 const ArsenalPage = () => {
-  const { weapons, loading, error, updateWeapons, updateLoading, updateError } =
-    useArsenalContext();
-
-  const memoizedUpdateWeapons = useCallback(
-    (data) => {
-      updateWeapons(data);
-    },
-    [updateWeapons]
-  );
-  const memoizedUpdateLoading = useCallback(
-    (status) => {
-      updateLoading(status);
-    },
-    [updateLoading]
-  );
-  const memoizedUpdateError = useCallback(
-    (err) => {
-      updateError(err);
-    },
-    [updateError]
-  );
+  const { weapons, loading, error } = useArsenalContext();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    const loadWeapons = async () => {
-      if (weapons.length > 0) return;
-      try {
-        memoizedUpdateLoading(true);
-        const data = await fetchArsenal();
-        memoizedUpdateWeapons(data);
-        memoizedUpdateLoading(false);
-      } catch (err) {
-        memoizedUpdateError("Failed to load weapons");
-        memoizedUpdateLoading(false);
-      }
-    };
-
-    loadWeapons();
-  }, [
-    weapons.length,
-    memoizedUpdateWeapons,
-    memoizedUpdateLoading,
-    memoizedUpdateError,
-  ]);
 
   if (error) {
     return <StyledContainer>Error: {error}</StyledContainer>;
@@ -68,6 +26,7 @@ const ArsenalPage = () => {
   return (
     <StyledContainer>
       <StyledHeader>Arsenal</StyledHeader>
+      <WeaponSearch />
       <StyledWeaponsGrid>
         {loading
           ? Array.from({ length: 6 }).map((_, index) => (

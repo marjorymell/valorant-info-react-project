@@ -1,15 +1,9 @@
 import React from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
-import { Search as SearchIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/images/Home/logo.png";
 import { useNavbarContext } from "../../contexts/Navbar";
-import {
-  NavLink,
-  SearchBox,
-  SearchIconWrapper,
-  StyledInputBase,
-} from "./NavbarStyles";
+import { NavLink } from "./NavbarStyles";
 
 function Navbar() {
   const { isScrolled } = useNavbarContext();
@@ -51,18 +45,6 @@ function Navbar() {
             transform: "translateX(-50%)",
           }}
         />
-
-        <Box sx={{ marginLeft: "auto" }}>
-          <SearchBox>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </SearchBox>
-        </Box>
       </Toolbar>
     </AppBar>
   );

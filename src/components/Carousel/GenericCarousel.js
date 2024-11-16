@@ -68,9 +68,9 @@ const GenericCarousel = ({
         onClick={handlePrev}
         disabled={startIndex === 0}
         sx={{
-          color: "#0e1822",
+          color: "black",
           "&:disabled": {
-            color: "rgba(14, 24, 34, 0.3)",
+            color: "rgba(7, 12, 17, 0.3)",
           },
         }}
       >
@@ -110,9 +110,9 @@ const GenericCarousel = ({
         onClick={handleNext}
         disabled={startIndex >= items.length - itemsToShow}
         sx={{
-          color: "#0e1822",
+          color: "black",
           "&:disabled": {
-            color: "rgba(14, 24, 34, 0.3)",
+            color: "rgba(7, 12, 17, 0.3)",
           },
         }}
       >

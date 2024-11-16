@@ -33,7 +33,7 @@ export const StyledHeader = ({ children }) => (
         transform: "translateX(-50%)",
         width: "60px",
         height: "4px",
-        backgroundColor: "black",
+        backgroundColor: "red",
       },
     }}
   >
