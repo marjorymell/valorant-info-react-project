@@ -2,7 +2,6 @@ import { styled } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const FooterContainer = styled("footer")({
-  marginTop: "50px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
