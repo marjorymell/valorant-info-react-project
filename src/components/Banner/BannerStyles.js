@@ -82,7 +82,7 @@ export const StartButton = styled("button")({
   cursor: "pointer",
   zIndex: 2,
   "&:hover": {
-    backgroundColor: "#1a1a1a",
+    backgroundColor: "#0d0d0d",
   },
   "@media (max-width: 768px)": {
     fontSize: "1rem",

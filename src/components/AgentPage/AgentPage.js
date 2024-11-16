@@ -40,6 +40,7 @@ const AgentPage = ({ agentId }) => {
     };
 
     loadAgentDetails();
+    window.scrollTo(0, 0);
   }, [agentId]);
 
   if (loading) {

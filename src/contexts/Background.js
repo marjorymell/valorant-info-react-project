@@ -13,7 +13,7 @@ export const BackgroundProvider = ({ children }) => {
     if (location.pathname === "/") {
       setBackgroundImage("white");
     } else {
-      setBackgroundImage("linear-gradient(to bottom, #0f202d, #253f58)");
+      setBackgroundImage("linear-gradient(to bottom, #000000, #253f58)");
     }
   }, [location]);
 

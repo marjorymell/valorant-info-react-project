@@ -6,7 +6,7 @@ export const FooterContainer = styled("footer")({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "#0f202d",
+  backgroundColor: "black",
   color: "#ffffff",
   padding: "20px",
   textAlign: "center",
