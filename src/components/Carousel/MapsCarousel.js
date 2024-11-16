@@ -4,6 +4,7 @@ import GenericCarousel from "./GenericCarousel";
 import GenericCard from "./GenericCard";
 import { useCarouselContext } from "../../contexts/Carousel";
 import { fetchMaps } from "../../services/Map";
+import { Link } from "react-router-dom";
 
 const MapsCarousel = () => {
   const { carouselSettings } = useCarouselContext();
@@ -32,15 +33,17 @@ const MapsCarousel = () => {
   }
 
   const renderMapCard = (map) => (
-    <GenericCard
-      item={{
-        name: map.displayName,
-        image: map.splash,
-      }}
-      width={itemWidth}
-      height={itemHeight}
-      type="map"
-    />
+    <Link to="/map" style={{ textDecoration: "none" }} key={map.uuid}>
+      <GenericCard
+        item={{
+          name: map.displayName,
+          image: map.splash,
+        }}
+        width={itemWidth}
+        height={itemHeight}
+        type="map"
+      />
+    </Link>
   );
 
   return (
