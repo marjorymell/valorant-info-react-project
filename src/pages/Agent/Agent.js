@@ -5,7 +5,6 @@ import AgentPage from "../../components/AgentPage/AgentPage";
 import { BackgroundProvider } from "../../contexts/Background";
 import { BannerProvider } from "../../contexts/Banner";
 import { CarouselProvider } from "../../contexts/Carousel";
-import { fetchAgentById } from "../../services/Agent";
 
 const Agent = () => {
   const { agentId } = useParams();
@@ -15,11 +14,7 @@ const Agent = () => {
       <BannerProvider>
         <CarouselProvider>
           <Background>
-            <AgentPage
-              itemId={agentId}
-              fetchItem={fetchAgentById}
-              itemType="agent"
-            />
+            <AgentPage agentId={agentId} />
           </Background>
         </CarouselProvider>
       </BannerProvider>
