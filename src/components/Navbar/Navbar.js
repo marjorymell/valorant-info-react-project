@@ -32,6 +32,9 @@ function Navbar() {
           <NavLink variant="h6" component={Link} to="/arsenal">
             Arsenal
           </NavLink>
+          <NavLink variant="h6" component={Link} to="/map">
+            Map
+          </NavLink>
         </Box>
 
         <Box

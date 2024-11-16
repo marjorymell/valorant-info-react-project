@@ -3,7 +3,6 @@ import { Box, Typography } from "@mui/material";
 export const StyledContainer = ({ children }) => (
   <Box
     sx={{
-      padding: "2rem",
       color: "white",
       minHeight: "100vh",
     }}
