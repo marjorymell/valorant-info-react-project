@@ -38,7 +38,7 @@ function Navbar() {
           <NavLink variant="h6" component="a" href="#">
             Agents
           </NavLink>
-          <NavLink variant="h6" component="a" href="#">
+          <NavLink variant="h6" component={Link} to="/arsenal">
             Arsenal
           </NavLink>
           <NavLink variant="h6" component="a" href="#">

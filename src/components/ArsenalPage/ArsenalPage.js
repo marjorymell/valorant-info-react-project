@@ -35,6 +35,10 @@ const ArsenalPage = () => {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const loadWeapons = async () => {
       if (weapons.length > 0) return;
       try {

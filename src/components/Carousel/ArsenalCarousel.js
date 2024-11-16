@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
+import { Link } from "react-router-dom"; // Import Link
 import GenericCarousel from "./GenericCarousel";
 import GenericCard from "./GenericCard";
 import { useCarouselContext } from "../../contexts/Carousel";
@@ -32,15 +33,17 @@ const ArsenalCarousel = () => {
   }
 
   const renderArsenalCard = (weapon) => (
-    <GenericCard
-      item={{
-        name: weapon.displayName,
-        image: weapon.displayIcon,
-      }}
-      width={itemWidth}
-      height={itemHeight}
-      type="arsenal"
-    />
+    <Link to="/arsenal" style={{ textDecoration: "none" }}>
+      <GenericCard
+        item={{
+          name: weapon.displayName,
+          image: weapon.displayIcon,
+        }}
+        width={itemWidth}
+        height={itemHeight}
+        type="arsenal"
+      />
+    </Link>
   );
 
   return (
