@@ -6,19 +6,19 @@ const BackgroundContext = createContext();
 export const useBackgroundContext = () => useContext(BackgroundContext);
 
 export const BackgroundProvider = ({ children }) => {
-  const [backgroundColor, setBackgroundColor] = useState("white");
+  const [backgroundImage, setBackgroundImage] = useState("white");
   const location = useLocation();
 
   useEffect(() => {
     if (location.pathname === "/") {
-      setBackgroundColor("white");
+      setBackgroundImage("white");
     } else {
-      setBackgroundColor("#253f58");
+      setBackgroundImage("linear-gradient(to bottom, #0f202d, #253f58)");
     }
   }, [location]);
 
   return (
-    <BackgroundContext.Provider value={{ backgroundColor }}>
+    <BackgroundContext.Provider value={{ backgroundImage }}>
       {children}
     </BackgroundContext.Provider>
   );
