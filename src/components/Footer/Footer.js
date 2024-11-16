@@ -16,6 +16,7 @@ const Footer = () => {
       <FooterLinks>
         {footerLinks.map((link, index) => (
           <FooterLink
+            as="a"
             key={index}
             href={link.path}
             target="_blank"
