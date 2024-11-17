@@ -7,29 +7,20 @@ import Map from "./pages/Map";
 import Arsenal from "./pages/Arsenal";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import { NavbarProvider } from "./contexts/Navbar";
-import { BackgroundProvider } from "./contexts/Background";
-import { BannerProvider } from "./contexts/Banner";
-import { FooterProvider } from "./contexts/Footer";
+import { AppProviders } from "./contexts/AppProviders";
 
 const App = () => {
   return (
-    <BackgroundProvider>
-      <BannerProvider>
-        <NavbarProvider>
-          <FooterProvider>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/agent/:agentId" element={<Agent />} />
-              <Route path="/arsenal" element={<Arsenal />} />
-              <Route path="/map" element={<Map />} />
-            </Routes>
-            <Footer />
-          </FooterProvider>
-        </NavbarProvider>
-      </BannerProvider>
-    </BackgroundProvider>
+    <AppProviders>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/agent/:agentId" element={<Agent />} />
+        <Route path="/arsenal" element={<Arsenal />} />
+        <Route path="/map" element={<Map />} />
+      </Routes>
+      <Footer />
+    </AppProviders>
   );
 };
 

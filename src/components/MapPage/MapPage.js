@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useMapContext } from "../../contexts/Map";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import { StyledHeader, Container, CardImageContainer } from "./MapPageStyles";
+import { fetchMaps } from "../../services/Map";
 
 const MapPage = () => {
-  const { maps, loading, error } = useMapContext();
+  const [maps, setMaps] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [hoveredCard, setHoveredCard] = useState({});
 
   useEffect(() => {
+    const loadMaps = async () => {
+      try {
+        const mapsData = await fetchMaps();
+        setMaps(mapsData);
+      } catch (err) {
+        setError("Failed to load maps");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadMaps();
     window.scrollTo(0, 0);
   }, []);
 
@@ -34,7 +48,7 @@ const MapPage = () => {
 
   return (
     <>
-      <StyledHeader>Map</StyledHeader>
+      <StyledHeader>Maps</StyledHeader>
       <Container>
         {loading
           ? Array.from({ length: 16 }).map((_, index) => (

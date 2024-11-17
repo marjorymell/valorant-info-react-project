@@ -2,28 +2,21 @@ import React, { createContext, useContext, useState } from "react";
 
 const CarouselContext = createContext();
 
-export const useCarouselContext = () => useContext(CarouselContext);
+export const useCarouselContext = () => {
+  const context = useContext(CarouselContext);
+  if (!context) {
+    throw new Error(
+      "useCarouselContext must be used within a CarouselProvider"
+    );
+  }
+  return context;
+};
 
 export const CarouselProvider = ({ children }) => {
   const [carouselSettings, setCarouselSettings] = useState({
-    agent: {
-      itemWidth: 200,
-      itemHeight: 320,
-      itemsToShow: 5,
-      gap: 20,
-    },
-    arsenal: {
-      itemWidth: 255,
-      itemHeight: 200,
-      itemsToShow: 4,
-      gap: 20,
-    },
-    maps: {
-      itemWidth: 525,
-      itemHeight: 300,
-      itemsToShow: 2,
-      gap: 20,
-    },
+    agent: { itemWidth: 200, itemHeight: 320, itemsToShow: 5, gap: 20 },
+    arsenal: { itemWidth: 255, itemHeight: 200, itemsToShow: 4, gap: 20 },
+    maps: { itemWidth: 525, itemHeight: 300, itemsToShow: 2, gap: 20 },
   });
 
   const [cardSettings, setCardSettings] = useState({
@@ -33,15 +26,19 @@ export const CarouselProvider = ({ children }) => {
     textColor: "#ff4655",
   });
 
-  const updateCarouselSettings = (type, newSettings) => {
-    setCarouselSettings((prevSettings) => ({
-      ...prevSettings,
-      [type]: { ...prevSettings[type], ...newSettings },
-    }));
-  };
-
-  const updateCardSettings = (newSettings) => {
-    setCardSettings({ ...cardSettings, ...newSettings });
+  const updateSettings = (
+    type,
+    newSettings,
+    settingsKey = "carouselSettings"
+  ) => {
+    if (settingsKey === "carouselSettings") {
+      setCarouselSettings((prev) => ({
+        ...prev,
+        [type]: { ...prev[type], ...newSettings },
+      }));
+    } else if (settingsKey === "cardSettings") {
+      setCardSettings((prev) => ({ ...prev, ...newSettings }));
+    }
   };
 
   return (
@@ -49,8 +46,7 @@ export const CarouselProvider = ({ children }) => {
       value={{
         carouselSettings,
         cardSettings,
-        updateCarouselSettings,
-        updateCardSettings,
+        updateSettings,
       }}
     >
       {children}
