@@ -57,10 +57,25 @@ const ArsenalPage = () => {
                 />
                 <StyledWeaponName>{weapon.displayName}</StyledWeaponName>
                 <StyledWeaponStats>
-                  Category: {weapon.shopData?.category || "N/A"} <br />
-                  Cost: {weapon.shopData?.cost || "N/A"} Credits <br />
-                  Fire Rate: {weapon.weaponStats?.fireRate || "N/A"} <br />
-                  Magazine Size: {weapon.weaponStats?.magazineSize || "N/A"}
+                  <div className="label">Category:</div>
+                  <div className="value">
+                    {weapon.shopData?.category || "N/A"}
+                  </div>
+
+                  <div className="label">Cost:</div>
+                  <div className="value">
+                    {weapon.shopData?.cost || "N/A"} Credits
+                  </div>
+
+                  <div className="label">Fire Rate:</div>
+                  <div className="value">
+                    {weapon.weaponStats?.fireRate || "N/A"}
+                  </div>
+
+                  <div className="label">Magazine Size:</div>
+                  <div className="value">
+                    {weapon.weaponStats?.magazineSize || "N/A"}
+                  </div>
                 </StyledWeaponStats>
               </StyledWeaponCard>
             ))}

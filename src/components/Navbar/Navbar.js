@@ -33,7 +33,7 @@ function Navbar() {
             Arsenal
           </NavLink>
           <NavLink variant="h6" component={Link} to="/map">
-            Map
+            Maps
           </NavLink>
         </Box>
 

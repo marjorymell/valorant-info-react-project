@@ -2,13 +2,13 @@ import { styled } from "@mui/system";
 import { Typography, Box } from "@mui/material";
 
 export const StyledHeader = styled(Typography)(({ theme }) => ({
-  marginTop: "100px",
-  fontSize: theme.breakpoints.values.md ? "3.5rem" : "2.5rem",
+  marginTop: "80px",
+  fontSize: { xs: "2.5rem", md: "3.5rem" },
   fontWeight: "bold",
   textTransform: "uppercase",
   letterSpacing: "0.1em",
   textAlign: "center",
-  marginBottom: theme.spacing(6),
+  marginBottom: "2rem",
   color: "white",
   position: "relative",
   "&::after": {

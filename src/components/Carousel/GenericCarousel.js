@@ -11,6 +11,7 @@ const GenericCarousel = ({
   itemsToShow,
   gap = 10,
   loading = false,
+  arrowColor = "black",
 }) => {
   const { carouselSettings } = useCarouselContext();
   const [startIndex, setStartIndex] = useState(0);
@@ -68,9 +69,11 @@ const GenericCarousel = ({
         onClick={handlePrev}
         disabled={startIndex === 0}
         sx={{
-          color: "black",
+          color: arrowColor,
           "&:disabled": {
-            color: "rgba(7, 12, 17, 0.3)",
+            color: `rgba(${
+              arrowColor === "white" ? "255, 255, 255" : "7, 12, 17"
+            }, 0.3)`,
           },
         }}
       >
@@ -110,9 +113,11 @@ const GenericCarousel = ({
         onClick={handleNext}
         disabled={startIndex >= items.length - itemsToShow}
         sx={{
-          color: "black",
+          color: arrowColor,
           "&:disabled": {
-            color: "rgba(7, 12, 17, 0.3)",
+            color: `rgba(${
+              arrowColor === "white" ? "255, 255, 255" : "7, 12, 17"
+            }, 0.3)`,
           },
         }}
       >

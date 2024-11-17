@@ -4,7 +4,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useArsenalContext } from "../../contexts/ArsenalPage";
 import { fetchArsenal } from "../../services/Arsenal";
 import GenericCarousel from "../Carousel/GenericCarousel";
-import { useCarouselContext } from "../../contexts/Carousel";
 import {
   StyledWeaponCard,
   StyledWeaponImage,
@@ -18,8 +17,6 @@ const WeaponSearch = () => {
   const [error, setError] = useState("");
   const { weapons, updateWeapons, updateLoading, updateError } =
     useArsenalContext();
-  const { carouselSettings } = useCarouselContext();
-  const { itemWidth, itemHeight, itemsToShow, gap } = carouselSettings.arsenal;
 
   useEffect(() => {
     const loadWeapons = async () => {
@@ -44,7 +41,7 @@ const WeaponSearch = () => {
     setSearchTerm(term);
 
     if (term.trim() === "") {
-      setError("Please enter a search term.");
+      setError("Please enter a weapon name.");
       setSelectedWeapon(null);
       return;
     }
@@ -84,7 +81,7 @@ const WeaponSearch = () => {
       >
         {skin.displayName}
       </StyledWeaponName>
-      <StyledWeaponStats sx={{ flexShrink: 0 }}>
+      <StyledWeaponStats>
         Skin Level: {skin.levels.length}
         <br />
         Chromas: {skin.chromas.length}
@@ -95,34 +92,30 @@ const WeaponSearch = () => {
   return (
     <Box
       sx={{
-        width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        padding: "1rem",
       }}
     >
       <TextField
         variant="outlined"
-        placeholder="Search weapons..."
+        placeholder="Search by weapon name..."
         value={searchTerm}
         onChange={handleSearch}
-        slotProps={{
-          input: {
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon sx={{ color: "white" }} />
-              </InputAdornment>
-            ),
-            style: {
-              color: "white",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              borderRadius: "8px",
-            },
-          },
+        autoComplete="off"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon sx={{ color: "white" }} />
+            </InputAdornment>
+          ),
         }}
         sx={{
-          width: "250px",
+          width: "300px",
           marginBottom: "2rem",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          borderRadius: "8px",
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
               borderColor: "rgba(255, 255, 255, 0.3)",
@@ -134,23 +127,26 @@ const WeaponSearch = () => {
               borderColor: "white",
             },
           },
-          "& .MuiInputLabel-root": {
-            color: "rgba(255, 255, 255, 0.7)",
-          },
-          "& .MuiInputBase-input::placeholder": {
-            color: "rgba(255, 255, 255, 0.5)",
-            opacity: 1,
+          "& .MuiInputBase-input": {
+            color: "white",
+            "::placeholder": {
+              color: "rgba(255, 255, 255, 0.5)",
+            },
           },
         }}
       />
+
       {error && (
         <Typography
           variant="body1"
           sx={{
             color: "red",
-            marginTop: 2,
             textAlign: "center",
-            width: "100%",
+            marginTop: 2,
+            padding: "0.5rem",
+            backgroundColor: "rgba(255, 0, 0, 0.1)",
+            borderRadius: "8px",
+            maxWidth: "300px",
           }}
         >
           {error}
@@ -167,11 +163,12 @@ const WeaponSearch = () => {
           <GenericCarousel
             items={selectedWeapon.skins}
             renderItem={renderSkinCard}
-            itemWidth={itemWidth}
-            itemHeight={itemHeight}
-            itemsToShow={itemsToShow}
-            gap={gap}
+            itemWidth={300}
+            itemHeight={200}
+            itemsToShow={3}
+            gap={10}
             loading={false}
+            arrowColor="white"
           />
         </Box>
       ) : (
@@ -180,12 +177,15 @@ const WeaponSearch = () => {
             variant="body1"
             sx={{
               color: "red",
-              marginTop: 2,
               textAlign: "center",
-              width: "100%",
+              marginTop: 2,
+              padding: "0.5rem",
+              backgroundColor: "rgba(255, 0, 0, 0.1)",
+              borderRadius: "8px",
+              maxWidth: "300px",
             }}
           >
-            No weapon found with that name.
+            No weapon found for "{searchTerm}"
           </Typography>
         )
       )}
